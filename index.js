@@ -7,10 +7,12 @@ const mongoString = process.env.DATABASE_URL
 const app = express();
 const routes = require('./routes/routes');
 
-app.use('/api', routes)
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+const cors = require('cors');
+app.use(cors())
+app.use('/api', routes)
 
 
 
